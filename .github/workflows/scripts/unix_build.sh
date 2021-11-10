@@ -4,6 +4,7 @@ python3 -m pip uninstall taichi taichi-nightly -y
 python3 -m pip install -r requirements_dev.txt
 cd python
 git fetch origin master
+if [[ $OSTYPE == 'darwin'* ]]; then brew install brew; fi
 TAICHI_CMAKE_ARGS=$CI_SETUP_CMAKE_ARGS python3 build.py build
 cd ..
 export NUM_WHL=`ls dist/*.whl | wc -l`
